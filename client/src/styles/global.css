@@ -1,0 +1,82 @@
+/* ── Design tokens ──────────────────────────────────────────────────────── */
+:root {
+  --font-display: 'Boogaloo', cursive;
+  --font-body:    'Nunito', sans-serif;
+
+  --color-bg:       #06001a;
+  --color-surface:  rgba(255,255,255,.04);
+  --color-border:   rgba(255,255,255,.09);
+  --color-text:     rgba(255,255,255,.88);
+  --color-muted:    rgba(255,255,255,.35);
+  --color-faint:    rgba(255,255,255,.12);
+
+  --color-purple:   #a855f7;
+  --color-pink:     #db2777;
+  --color-gold:     #ffd700;
+  --color-blue:     #60a5fa;
+
+  --radius-sm:  10px;
+  --radius-md:  16px;
+  --radius-lg:  22px;
+  --radius-xl:  28px;
+  --radius-pill: 100px;
+
+  --shadow-card:   0 20px 60px rgba(0,0,0,.5);
+  --shadow-glow-p: 0 8px 40px rgba(168,85,247,.45);
+  --shadow-glow-g: 0 8px 40px rgba(255,215,0,.35);
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100vh; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  background: radial-gradient(ellipse at 20% 10%, #1a0038 0%, #06001a 50%, #00101e 100%);
+  color: var(--color-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+a      { color: inherit; text-decoration: none; }
+img    { display: block; max-width: 100%; }
+
+/* ── Animated background ────────────────────────────────────────────────── */
+.bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  animation: orb-drift 18s ease-in-out infinite alternate;
+}
+.bg__orb--1 { width:600px; height:600px; background:rgba(120,20,255,.14);  top:-200px;  left:-150px; }
+.bg__orb--2 { width:500px; height:500px; background:rgba(0,130,255,.10);   bottom:-150px; right:-150px; animation-delay:-6s; }
+.bg__orb--3 { width:350px; height:350px; background:rgba(255,50,180,.08);  top:35%; left:55%; animation-delay:-12s; }
+.bg__orb--4 { width:280px; height:280px; background:rgba(255,200,0,.07);   top:65%; left:5%;  animation-delay:-3s; }
+
+@keyframes orb-drift {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(30px,-40px) scale(1.12); }
+}
+
+.bg__stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 72%, rgba(255,255,255,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55%  8%, rgba(255,255,255,.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 45%, rgba(255,255,255,.4) 0%, transparent 100%),
+    radial-gradient(2px 2px at 22% 55%, rgba(255,220,120,.7) 0%, transparent 100%),
+    radial-gradient(2px 2px at 68% 22%, rgba(120,200,255,.6) 0%, transparent 100%);
+  animation: twinkle 5s ease-in-out infinite alternate;
+}
+@keyframes twinkle { 0%{opacity:.5} 100%{opacity:1} }
