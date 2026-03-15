@@ -46,6 +46,9 @@ cd client && npm run dev
 
 ---
 
+## Architecture
+
+
 ## How it works
 
 1. The child picks a **subject** (e.g. "Basic Addition") and a **cartoon teacher** (e.g. "Professor Twigs")
