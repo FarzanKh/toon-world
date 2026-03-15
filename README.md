@@ -1,6 +1,48 @@
-# Toon World 3D
+# Toon World
 
 An educational app for children aged 4–8. Original cartoon characters teach subjects like counting, the alphabet, and animals through AI-generated interleaved text and image lessons — powered by Google Gemini on Google Cloud.
+
+---
+
+
+## Running locally
+
+### Prerequisites
+
+- [Node.js 20+](https://nodejs.org)
+- [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
+- A GCP project with **Vertex AI API** enabled
+
+### Steps
+
+```bash
+# 1. Authenticate with Google Cloud
+gcloud auth application-default login
+gcloud config set project YOUR_PROJECT_ID
+
+# 2. Install server dependencies (includes @google/genai SDK)
+npm install
+
+# 3. Build the React frontend
+cd client && npm install && npm run build && cd ..
+
+# 4. Start the server
+GOOGLE_CLOUD_PROJECT=your-project-id node server.js
+
+# 5. Open the app
+#    http://localhost:8080
+```
+
+The Vite dev server (hot reload) is also available if you need it:
+
+```bash
+# Terminal 1
+GOOGLE_CLOUD_PROJECT=your-project-id node server.js
+
+# Terminal 2
+cd client && npm run dev
+# Open http://localhost:5173
+```
 
 ---
 
@@ -103,47 +145,6 @@ for await (const chunk of stream) {
 ```
 
 The browser reads this SSE stream in `client/src/api/gemini.js` and calls `onBlock()` for each completed part. `LessonPage.jsx` appends each block to React state immediately, so the lesson renders block by block — not all at once.
-
----
-
-## Running locally
-
-### Prerequisites
-
-- [Node.js 20+](https://nodejs.org)
-- [Google Cloud CLI](https://cloud.google.com/sdk/docs/install)
-- A GCP project with **Vertex AI API** enabled
-
-### Steps
-
-```bash
-# 1. Authenticate with Google Cloud
-gcloud auth application-default login
-gcloud config set project YOUR_PROJECT_ID
-
-# 2. Install server dependencies (includes @google/genai SDK)
-npm install
-
-# 3. Build the React frontend
-cd client && npm install && npm run build && cd ..
-
-# 4. Start the server
-GOOGLE_CLOUD_PROJECT=your-project-id node server.js
-
-# 5. Open the app
-#    http://localhost:8080
-```
-
-The Vite dev server (hot reload) is also available if you need it:
-
-```bash
-# Terminal 1
-GOOGLE_CLOUD_PROJECT=your-project-id node server.js
-
-# Terminal 2
-cd client && npm run dev
-# Open http://localhost:5173
-```
 
 ---
 
