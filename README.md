@@ -47,7 +47,9 @@ cd client && npm run dev
 ---
 
 ## Architecture
+![Architecture diagram](architecture_diagram.png)
 
+---
 
 ## How it works
 
